@@ -1,6 +1,0 @@
-c:\users\walter\documents\visual studio 2015\Projects\appCCRWS\appCCRWS\bin\appCCRWS.dll.config
-c:\users\walter\documents\visual studio 2015\Projects\appCCRWS\appCCRWS\bin\appCCRWS.dll
-c:\users\walter\documents\visual studio 2015\Projects\appCCRWS\appCCRWS\bin\appCCRWS.pdb
-c:\users\walter\documents\visual studio 2015\Projects\appCCRWS\appCCRWS\obj\Release\appCCRWS.dll
-c:\users\walter\documents\visual studio 2015\Projects\appCCRWS\appCCRWS\obj\Release\appCCRWS.pdb
-C:\Users\Walter\Documents\Visual Studio 2015\Projects\appCCRWS\appCCRWS\obj\Release\appCCRWS.csprojResolveAssemblyReference.cache
