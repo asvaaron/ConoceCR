@@ -16,7 +16,6 @@ REFERENCES Respuestas(id_respuesta)
 create table Usuarios(
 	id_usuario int,
 	nombre varchar(100),
-	contrasena varchar(100),
 CONSTRAINT PK_Usuarios PRIMARY KEY (id_usuario)
 );
 
@@ -31,7 +30,6 @@ REFERENCES Usuarios(id_usuario)
 );
 
 create table Intentos(
-	usuario int,
 	puntaje int,
 	pregunta int,
 	respuesta_seleccionada int,
