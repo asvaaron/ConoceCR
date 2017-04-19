@@ -39,7 +39,7 @@ public class menuPrincipal extends AppCompatActivity {
                         break;
 
                     case R.id.btn_mapa:
-                        intento = new Intent(getApplicationContext(), Maps_Activitygit .class);
+                        intento = new Intent(getApplicationContext(), Maps_Activity .class);
                         startActivity(intento);
 
                         break;
