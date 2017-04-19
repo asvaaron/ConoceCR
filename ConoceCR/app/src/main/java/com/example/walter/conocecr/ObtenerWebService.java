@@ -15,9 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by Walter on 4/1/2017.
- */
+
 
 
 public class ObtenerWebService extends AsyncTask<String, Integer, String> {
@@ -25,15 +23,17 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
 
-
+        String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
+        //
         String cadena = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
 
         String devuelve = "";
 
         URL url = null; // Url de donde queremos obtener información
         try {
+            // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(cadena);
+            url = new URL(conn_aaron);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");

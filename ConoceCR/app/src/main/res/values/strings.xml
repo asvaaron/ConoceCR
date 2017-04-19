@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ConoceCR</string>
+    <string name="title_activity_maps_">Map</string>
 </resources>
