@@ -1,6 +1,7 @@
 package com.example.walter.conocecr;
 
 import android.graphics.Color;
+import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -20,7 +21,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    private LatLng respuesta_coordenadas;// Respuesta Corrdenadas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +32,13 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         Button Mi_button = (Button) findViewById(R.id.btn_cambiar_tipo_mapa);
         registerForContextMenu(Mi_button);
+        respuesta_coordenadas= new LatLng(10.160180908178564,-83.97468566894531); // Parque Nacioal braulio Carillo
+
     }
 
-
+    private void set_respuesta_coordenadas(double lat, double lon){
+        this.respuesta_coordenadas= new LatLng(lat, lon);
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -58,7 +63,12 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
             @Override
             public void onMapLongClick(LatLng latLng) {
                 mMap.addMarker(new MarkerOptions().position(latLng).title("Mi marca"));
-                Mensaje("Posición: (" + latLng + ")");
+
+                if(respuesta_correcta(respuesta_coordenadas,latLng,10))
+                Mensaje("Correcto Posición: (" +calcular_distancia(respuesta_coordenadas,latLng)+ ")");
+                else
+                    Mensaje("Respuesta Incorrecta, Intente de neuvo");
+                //Mensaje("Correcto Posición: (" +calcular_distancia(respuesta_coordenadas,latLng)+ ")");
             }
         });
     }
@@ -77,6 +87,26 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
         }
         super.onCreateContextMenu(menu, v, menuInfo);
 
+    }
+
+    private double calcular_distancia(LatLng primero, LatLng segundo){
+        //Coordenadas de los puntos entre los que se calcula la distancia
+        double distancia;
+        Location locationA = new Location("");
+        locationA.setLatitude(primero.latitude);
+        locationA.setLongitude(primero.longitude);
+        Location locationB = new Location("");
+        locationB.setLatitude(segundo.latitude);
+        locationB.setLongitude(segundo.longitude);
+        distancia = locationA.distanceTo(locationB)/1000;
+        //La distancia se da en kilomotros (km) SI
+       return distancia;
+    }
+    private boolean respuesta_correcta(LatLng primero, LatLng segundo, int dist_min){
+        if(calcular_distancia(primero,segundo)<=dist_min)
+            return true;
+        else
+            return false;
     }
 
 
