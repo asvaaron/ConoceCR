@@ -1,5 +1,6 @@
 package com.example.walter.conocecr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +25,9 @@ public class Base_Activity extends AppCompatActivity {
                 Mensaje("Segundo");
                 break;
             case R.id.item_autores:
-                Mensaje("Tercero");
+
+                Intent intento = new Intent(getApplicationContext(), Autores_Activity.class);
+                startActivity(intento);
                 break;
             default:
                 Mensaje("No clasificado");

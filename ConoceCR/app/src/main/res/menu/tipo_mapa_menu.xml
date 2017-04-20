@@ -11,5 +11,6 @@
         android:id="@+id/item_map_satellite" />
     <item android:title="Hybrid"
         android:id="@+id/item_map_hybrid" />
-
+    <item android:title="Custom"
+        android:id="@+id/item_map_custom" />
 </menu>

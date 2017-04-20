@@ -33,6 +33,7 @@ public class Act_pregunta extends Base_Activity implements AsyncResponse{
         OnclickDelButton(R.id.btnB);
         OnclickDelButton(R.id.btnC);
         OnclickDelButton(R.id.btnD);
+
     }
 
     public void OnclickDelButton(int ref) {
