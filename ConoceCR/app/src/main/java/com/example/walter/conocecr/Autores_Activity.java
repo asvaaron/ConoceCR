@@ -28,9 +28,9 @@ public class Autores_Activity extends AppCompatActivity {
 
 
     private void LlenarListaObjetos() {
-        misObjetos.add(new Autores("Walter Araya", "A1-02", R.drawable.aaron));
-        misObjetos.add(new Autores("Jean Abarca", "A2-02", R.drawable.aaron));
-        misObjetos.add(new Autores("Aaron Sibaja", "A3-02", R.drawable.aaron));
+        misObjetos.add(new Autores("Walter Araya", "A1-02", R.drawable.walter));
+        misObjetos.add(new Autores("Jean Abarca", "116070969", R.drawable.jean));
+        misObjetos.add(new Autores("Aarón Sibaja", "402230919", R.drawable.aaron));
 
     }
 

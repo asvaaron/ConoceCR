@@ -4,10 +4,11 @@
 
     <item android:title="Buscar"
         android:id="@+id/item1"
-
+        app:showAsAction="always"
         android:icon="@drawable/search"/>
     <item android:title="Ajustes"
         android:id="@+id/item2"
+
         android:icon="@drawable/settings"/>
 
     <item android:title="Autores"
