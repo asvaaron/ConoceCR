@@ -12,6 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.list;
+
 public class Autores_Activity extends AppCompatActivity {
 
     private List<Autores> misObjetos = new ArrayList<Autores>();
@@ -21,25 +23,28 @@ public class Autores_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_autores);
-        LlenarListaObjetos();
-        LlenarListView();
+        //LlenarListaObjetos();
+        set_ActionBar("Autores: ConoceCR");
+        //LlenarListView();
         //RegistrarClicks();
     }
 
-
+    public void set_ActionBar(String msg){getSupportActionBar().setTitle(msg);}
+/*
     private void LlenarListaObjetos() {
-        misObjetos.add(new Autores("Walter Araya", "A1-02", R.drawable.walter));
+       // misObjetos.add(new Autores("Walter Araya", "A1-02", R.drawable.walter));
+        // misObjetos.add(new Autores("Aarón Sibaja", "402230919", R.drawable.aaron));
+        //misObjetos.add(new Autores("Walter Araya", "A1-02", R.drawable.walter));
+        //misObjetos.add(new Autores("Aarón Sibaja", "402230919", R.drawable.aaron));
         misObjetos.add(new Autores("Jean Abarca", "116070969", R.drawable.jean));
-        misObjetos.add(new Autores("Aarón Sibaja", "402230919", R.drawable.aaron));
+    }*/
 
-    }
-
-    private void LlenarListView() {
+    /*private void LlenarListView() {
         ArrayAdapter<Autores> adapter = new MyListAdapter();
         ListView list = (ListView) findViewById(R.id.list_view_autores);
         list.setAdapter(adapter);
-    }
-
+    }*/
+/*
     private class MyListAdapter extends ArrayAdapter<Autores> {
         public MyListAdapter() {
             super(Autores_Activity.this, R.layout.desplegar_objetos, misObjetos);
@@ -64,4 +69,5 @@ public class Autores_Activity extends AppCompatActivity {
         }
 
     }
+*/
 }

@@ -29,21 +29,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Trivia Mapa"
+        android:layout_marginTop="29dp"
         android:layout_below="@+id/btn1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="21dp" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btn1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_marginTop="39dp"
+        android:text="Iniciar Trivia"
+        android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginTop="114dp"
-        android:text="Iniciar Trivia" />
+        app:srcCompat="@drawable/cr_map" />
 
 </RelativeLayout>

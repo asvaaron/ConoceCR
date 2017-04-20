@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/ivdibujo"
-        android:layout_width="141dp"
+        android:layout_width="140dp"
         android:layout_height="140dp"
         app:srcCompat="@drawable/aaron" />
 

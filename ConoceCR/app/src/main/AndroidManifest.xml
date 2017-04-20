@@ -43,8 +43,10 @@
             android:label="@string/title_activity_maps_" />
         <activity android:name=".Autores_Activity" />
         <activity
-            android:name=".Settings_Activity"
-            android:label="@string/title_activity_settings_"></activity>
+            android:name=".Autors_Activity"
+            android:label="@string/title_activity_autors_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".WebView_Activity"></activity>
     </application>
 
 </manifest>

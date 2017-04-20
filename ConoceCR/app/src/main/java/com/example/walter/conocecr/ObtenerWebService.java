@@ -25,7 +25,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
 
         String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
         //
-        String cadena = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
+        String conn_walter = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
 
         String devuelve = "";
 

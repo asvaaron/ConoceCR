@@ -1,7 +1,9 @@
 package com.example.walter.conocecr;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -43,6 +45,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
 
         OnclickDelButton(R.id.btn_limpiar_marca);
         OnclickDelButton(R.id.btn_respuesta);
+        OnclickDelButton(R.id.btn_location_info);
 
     }
 
@@ -72,7 +75,16 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
                                 .fillColor(Color.GREEN));
 
                         break;
-                    default:break; }// fin de casos
+
+                    case R.id.btn_location_info:
+
+                        Uri uri = Uri.parse("https://es.wikipedia.org/wiki/Parque_nacional_Braulio_Carrillo");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+
+                    default:
+                        break;
+                }
             }// fin del onclick
         });
     }// fin de OnclickDelButton
