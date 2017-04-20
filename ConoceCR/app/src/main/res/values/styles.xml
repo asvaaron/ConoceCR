@@ -1,5 +1,17 @@
 <resources>
 
+
+
+    <style name="Custom_CR" parent="android:Theme.Holo.Light" >
+
+    </style>
+    <style name="Custom" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@android:color/holo_green_dark</item>
+        <item name="colorPrimary">@android:color/darker_gray</item>
+        <item name="colorPrimaryDark">@android:color/white</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
@@ -7,5 +19,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+
+
 
 </resources>

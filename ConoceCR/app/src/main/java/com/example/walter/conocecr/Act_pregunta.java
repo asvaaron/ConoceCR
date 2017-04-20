@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 
 
-public class Act_pregunta extends AppCompatActivity implements AsyncResponse{
+public class Act_pregunta extends Base_Activity implements AsyncResponse{
    public int correcta = 6;
     int[] ids_respuesta= new int[4];
     @Override
@@ -33,6 +33,7 @@ public class Act_pregunta extends AppCompatActivity implements AsyncResponse{
         OnclickDelButton(R.id.btnB);
         OnclickDelButton(R.id.btnC);
         OnclickDelButton(R.id.btnD);
+
     }
 
     public void OnclickDelButton(int ref) {
