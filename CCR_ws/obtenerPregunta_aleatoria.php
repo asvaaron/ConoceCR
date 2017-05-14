@@ -2,9 +2,14 @@
 	// Include confi.php
 	include_once('confi.php');
 
-	//$uid = isset($_GET['uid']) ? mysql_real_escape_string($_GET['uid']) :  "";
+	//$cat = isset($_GET['cat']) ? mysql_real_escape_string($_GET['cat']) :  "";
 	//if(!empty($uid)){
-		$qur = mysql_query("SELECT id_pregunta, descripcion, respuesta_correcta FROM Preguntas ORDER BY RAND() LIMIT 1;");
+        $que = mysql_query("SELECT id_categoria from Categorias WHERE id_categoria<>0 ORDER BY RAND() LIMIT 1;");       
+        while ($rr = mysql_fetch_assoc($que)) {
+            $cat=$rr['id_categoria'];
+        }
+             
+		$qur = mysql_query("SELECT id_pregunta, descripcion, respuesta_correcta FROM Preguntas WHERE categoria='$cat' ORDER BY RAND() LIMIT 1;");
 		//$result =array();
 		while($r = mysql_fetch_array($qur)){
 			extract($r);
@@ -13,7 +18,7 @@
                //@mysql_close($conn); 
                 
                 $query = mysql_query("SELECT id_respuesta, descripcion
-FROM Respuestas WHERE id_respuesta<>'$respuesta_correcta' ORDER BY RAND() LIMIT 3;");
+FROM Respuestas WHERE id_respuesta<>'$respuesta_correcta' AND categoria='$cat' ORDER BY RAND() LIMIT 3;");
                 $res =array();
                 while($r2 = mysql_fetch_array($query)){
 			extract($r2);

@@ -2,10 +2,6 @@ package com.example.walter.conocecr;
 
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +14,7 @@ import java.net.URL;
 
 
 
-public class ObtenerWebService extends AsyncTask<String, Integer, String> {
+public class ObtenerPreguntasWS extends AsyncTask<String, Integer, String> {
     public AsyncResponse delegate = null;
     @Override
     protected String doInBackground(String... params) {
@@ -33,7 +29,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(conn_aaron);
+            url = new URL(conn_walter);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");

@@ -3,14 +3,13 @@ package com.example.walter.conocecr;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,15 +24,20 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import static com.example.walter.conocecr.R.id.map;
 
-public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
-
+public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, AsyncResponse {
+    private int cnt=0;
+    private boolean resp = false;
     private GoogleMap mMap;
     private LatLng respuesta_coordenadas;// Respuesta Corrdenadas
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps_);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -41,7 +45,13 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         Button Mi_button = (Button) findViewById(R.id.btn_cambiar_tipo_mapa);
         registerForContextMenu(Mi_button);
-        respuesta_coordenadas= new LatLng(10.160180908178564,-83.97468566894531); // Parque Nacioal braulio Carillo
+
+        ObtenerCoordenadasWS hiloconexion = new ObtenerCoordenadasWS();
+        hiloconexion.delegate = this;
+        hiloconexion.execute();
+
+        cnt=3;
+        //respuesta_coordenadas= new LatLng(10.160180908178564,-83.97468566894531); // Parque Nacioal braulio Carillo
 
         OnclickDelButton(R.id.btn_limpiar_marca);
         OnclickDelButton(R.id.btn_respuesta);
@@ -68,19 +78,14 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
                         break;
 
                     case R.id.btn_respuesta:
-                        Circle circle = mMap.addCircle(new CircleOptions()
-                                .center(respuesta_coordenadas)
-                                .radius(10000)
-                                .strokeColor(Color.GREEN)
-                                .fillColor(Color.GREEN));
-
+                        mostrar_respuesta();
                         break;
 
                     case R.id.btn_location_info:
 
-                        Uri uri = Uri.parse("https://es.wikipedia.org/wiki/Parque_nacional_Braulio_Carrillo");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
+                        //Uri uri = Uri.parse("https://es.wikipedia.org/wiki/Parque_nacional_Braulio_Carrillo");
+                        //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        //startActivity(intent);
 
                     default:
                         break;
@@ -88,6 +93,14 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
             }// fin del onclick
         });
     }// fin de OnclickDelButton
+
+    private void mostrar_respuesta() {
+        Circle circle = mMap.addCircle(new CircleOptions()
+                .center(respuesta_coordenadas)
+                .radius(10000)
+                .strokeColor(0x8044FF5D)
+                .fillColor(0x7344FF5D));
+    }
 
     private void set_respuesta_coordenadas(double lat, double lon){
         this.respuesta_coordenadas= new LatLng(lat, lon);
@@ -103,33 +116,62 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+
+      mMap = googleMap;
+
+        mMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                        this, R.raw.style_json));
+
+        //LatLngBounds  CR = new LatLngBounds( new LatLng(11.295735, -83.897085), new LatLng(8.047543, -82.900913));
+        //mMap.setLatLngBoundsForCameraTarget(CR);
+        //limitar mapa a costa rica
 
         // Add a marker in Sydney and move the camera
         LatLng SJ_CR = new LatLng(9.9280694, -84.09072459999999);
         mMap.addMarker(new MarkerOptions().position(SJ_CR).title("Costa Rica"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(SJ_CR));
-        int zoomLevel = 16; //Esto puede ir hasta  21
+        int zoomLevel = 7; //Esto puede ir hasta  21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SJ_CR, zoomLevel));
         // Colocar dentro de onMapReady
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @Override
             public void onMapLongClick(LatLng latLng) {
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Mi marca").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)).draggable(true));
+                mMap.addMarker(new MarkerOptions().position(latLng).title("Marca").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)).draggable(true).alpha(0.7f));
                 if(respuesta_correcta(respuesta_coordenadas,latLng,10)) {
-                    Mensaje("Correcto Posición: (" + latLng + ")");
+
+                    mostrar_respuesta();
+                    Mensaje("Respuesta correcta! Posición: (" + latLng + ")");
                     mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    try{
+                        Thread.sleep(3000);
+                    }catch (InterruptedException e){}
+                    resp = true;
+                    //pasar a otro activity
+                    siguientePregunta();
                 }
                 else {
-                    Mensaje("Respuesta Incorrecta, Intente de nuevo");
+                    cnt--;
+                    Mensaje("Respuesta Incorrecta, Intente de nuevo! (Intentos restantes: "+cnt+".)");
+                    siguientePregunta();
                 }
                     //Mensaje("Correcto Posición: (" +calcular_distancia(respuesta_coordenadas,latLng)+ ")");
             }
         });
+
+
        UiSettings ui=(UiSettings) mMap.getUiSettings();
         ui.setZoomControlsEnabled(true);
         ui.setCompassEnabled(true);
         ui.setIndoorLevelPickerEnabled(true);
+    }
+
+    private void siguientePregunta(){
+        if(cnt==0||resp){
+            Intent intento = new Intent(getApplicationContext(), Maps_Activity.class);
+            startActivity(intento);
+            finish();
+        }
     }
 
     @Override
@@ -211,7 +253,29 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
     }
 
 
+    @Override
+    public void processFinish(String output) {
+        String preg="";
+        String correcta = "";
+        String[] rsp;
+        String coord[];
+        String[] respuestas = new String[4];
 
+        try {
+            JSONObject obj = new JSONObject(output);
+            JSONObject preguntaa = obj.getJSONObject("pregunta");
+            JSONObject respuestaa = obj.getJSONObject("respuesta");
+            preg=preguntaa.getString("descripcion");
+            correcta=respuestaa.getString("descripcion");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
+        rsp = correcta.split("_");
+        coord = rsp[1].split(",");
+        respuesta_coordenadas = new LatLng(Double.parseDouble(coord[0]),Double.parseDouble(coord[1]));
+        TextView pregunta = (TextView) findViewById(R.id.tvpregunta);
+        pregunta.setText("¿"+preg+"?");
 
+    }
 }
