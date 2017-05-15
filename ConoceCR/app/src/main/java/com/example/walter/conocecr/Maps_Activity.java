@@ -47,6 +47,8 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback {
         OnclickDelButton(R.id.btn_respuesta);
         OnclickDelButton(R.id.btn_location_info);
 
+
+
     }
 
     public void OnclickDelButton(int ref) {

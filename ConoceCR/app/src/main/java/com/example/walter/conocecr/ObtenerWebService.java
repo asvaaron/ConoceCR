@@ -24,7 +24,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
 
         String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
-        //
+        String conn_clase = "http://172.17.28.57/ConoceCR/obtenerPregunta_aleatoria.php";
         String conn_walter = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
 
         String devuelve = "";
@@ -33,7 +33,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(conn_aaron);
+            url = new URL(conn_clase);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
