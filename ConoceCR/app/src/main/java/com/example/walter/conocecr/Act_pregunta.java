@@ -4,7 +4,6 @@ package com.example.walter.conocecr;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import org.json.JSONObject;
 
 
 public class Act_pregunta extends Base_Activity implements AsyncResponse{
+
    public int correcta = 6;
     int[] ids_respuesta= new int[4];
     @Override
@@ -26,7 +26,7 @@ public class Act_pregunta extends Base_Activity implements AsyncResponse{
         setContentView(R.layout.activity_act_pregunta);
 
         //asyncTask.delegate = this;
-        ObtenerWebService hiloconexion = new ObtenerWebService();
+        ObtenerPreguntasWS hiloconexion = new ObtenerPreguntasWS();
         hiloconexion.delegate = this;
         hiloconexion.execute();
         OnclickDelButton(R.id.btnA);
@@ -101,6 +101,7 @@ public class Act_pregunta extends Base_Activity implements AsyncResponse{
 
     public void Mensaje(String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+
     @Override
     public void processFinish(String output) {
         String preg="";

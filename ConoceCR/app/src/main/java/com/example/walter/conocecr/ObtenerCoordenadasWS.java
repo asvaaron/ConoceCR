@@ -2,10 +2,6 @@ package com.example.walter.conocecr;
 
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,17 +11,18 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Created by Walter on 5/14/2017.
+ */
 
-
-
-public class ObtenerWebService extends AsyncTask<String, Integer, String> {
+public class ObtenerCoordenadasWS extends AsyncTask<String, Integer, String> {
     public AsyncResponse delegate = null;
     @Override
     protected String doInBackground(String... params) {
 
-        String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
-        String conn_clase = "http://172.17.28.57/ConoceCR/obtenerPregunta_aleatoria.php";
-        String conn_walter = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
+        String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerCoordenadas.php";
+        //
+        String conn_walter = "http://10.0.3.3/CCR_ws/obtenerCoordenadas.php";
 
         String devuelve = "";
 
@@ -33,7 +30,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(conn_clase);
+            url = new URL(conn_walter);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
@@ -60,7 +57,8 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
                 }
 
                 //Creamos un objeto JSONObject para poder acceder a los atributos (campos) del objeto.
-                //JSONObject respuestaJSON = new JSONObject(result.toString());   //Creo un JSONObject a partir del StringBuilder pasado a cadena
+
+
                 //Accedemos al vector de resultados
                 //JSONObject resultJSON = respuestaJSON.getJSONObject("pregunta");   // results es el nombre del campo en el JSON
 
@@ -69,9 +67,9 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
                 //String preg="no se recibio la info";
 
 
-                    //preg = resultJSON.getString("descripcion");
-                    //res =  resultJSON.getJSONObject(0).getString("respuestas");
-                    // dentro del results pasamos a Objeto la seccion formated_address
+                //preg = resultJSON.getString("descripcion");
+                //res =  resultJSON.getJSONObject(0).getString("respuestas");
+                // dentro del results pasamos a Objeto la seccion formated_address
 
                 devuelve = result.toString();   // variable de salida que mandaré al onPostExecute para que actualice la UI
 
@@ -84,8 +82,8 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        //} catch (JSONException e) {
-          //  e.printStackTrace();
+            //} catch (JSONException e) {
+            //  e.printStackTrace();
         }
         return devuelve;
     }
@@ -103,7 +101,7 @@ public class ObtenerWebService extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPreExecute() {
-       // delegate.processFinish("D:");
+        // delegate.processFinish("D:");
         super.onPreExecute();
     }
 
