@@ -144,7 +144,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
 
                     mostrar_respuesta();
                     Mensaje("Respuesta correcta! Posición: (" + latLng + ")");
-                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                     try{
                         Thread.sleep(3000);
                     }catch (InterruptedException e){}

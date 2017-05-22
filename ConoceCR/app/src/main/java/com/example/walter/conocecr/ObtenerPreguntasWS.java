@@ -11,7 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
+import static android.R.attr.src;
+import static com.example.walter.conocecr.R.drawable.walter;
 
 
 public class ObtenerPreguntasWS extends AsyncTask<String, Integer, String> {
@@ -29,11 +30,7 @@ public class ObtenerPreguntasWS extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-<<<<<<< HEAD:ConoceCR/app/src/main/java/com/example/walter/conocecr/ObtenerWebService.java
-            url = new URL(conn_clase);
-=======
-            url = new URL(conn_walter);
->>>>>>> fe45a5e1148288d8f5c609aaf6c6a38874a79379:ConoceCR/app/src/main/java/com/example/walter/conocecr/ObtenerPreguntasWS.java
+            url = new URL(conn_aaron);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");

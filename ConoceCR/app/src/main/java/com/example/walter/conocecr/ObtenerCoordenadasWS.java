@@ -20,7 +20,7 @@ public class ObtenerCoordenadasWS extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerCoordenadas.php";
+        String conn_aaron = "http://192.168.250.2/ConoceCR/obtenerCoordenadas.php";
         //
         String conn_walter = "http://10.0.3.3/CCR_ws/obtenerCoordenadas.php";
 
@@ -30,7 +30,7 @@ public class ObtenerCoordenadasWS extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(conn_walter);
+            url = new URL(conn_aaron);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
