@@ -133,7 +133,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
         LatLng SJ_CR = new LatLng(9.9280694, -84.09072459999999);
         mMap.addMarker(new MarkerOptions().position(SJ_CR).title("Costa Rica"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(SJ_CR));
-        int zoomLevel = 7; //Esto puede ir hasta  21
+        int zoomLevel = 10; //Esto puede ir hasta  21
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SJ_CR, zoomLevel));
         // Colocar dentro de onMapReady
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
