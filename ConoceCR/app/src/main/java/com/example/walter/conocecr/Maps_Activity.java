@@ -3,10 +3,8 @@ package com.example.walter.conocecr;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +32,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
     private boolean resp = false;
     private GoogleMap mMap;
     private LatLng respuesta_coordenadas;// Respuesta Corrdenadas
+    private String respuesta_info; // Respuesta de la pregunta para econtrar información
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +42,11 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-        Button Mi_button = (Button) findViewById(R.id.btn_cambiar_tipo_mapa);
-        registerForContextMenu(Mi_button);
 
+        respuesta_info="Braulio Carillo";// Búsqueda Default
+
+        //Button Mi_button = (Button) findViewById(R.id.btn_location_info);
+        //Mi_button.setActivated(false);
         ObtenerCoordenadasWS hiloconexion = new ObtenerCoordenadasWS();
         hiloconexion.delegate = this;
         hiloconexion.execute();
@@ -53,7 +54,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
         cnt=3;
         //respuesta_coordenadas= new LatLng(10.160180908178564,-83.97468566894531); // Parque Nacioal braulio Carillo
 
-        OnclickDelButton(R.id.btn_limpiar_marca);
+
         OnclickDelButton(R.id.btn_respuesta);
         OnclickDelButton(R.id.btn_location_info);
 
@@ -75,9 +76,6 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
                 // if(msg.equals("Texto")){Mensaje("Texto en el botón ");};
                 switch (v.getId()) {
 
-                    case R.id.btn_limpiar_marca:
-                        mMap.clear();
-                        break;
 
                     case R.id.btn_respuesta:
                         mostrar_respuesta();
@@ -85,9 +83,9 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
 
                     case R.id.btn_location_info:
 
-                        //Uri uri = Uri.parse("https://es.wikipedia.org/wiki/Parque_nacional_Braulio_Carrillo");
-                        //Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        //startActivity(intent);
+                        Uri uri = Uri.parse("https://es.wikipedia.org/wiki/"+respuesta_info);
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
 
                     default:
                         break;
@@ -176,21 +174,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
         }
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
 
-        switch (v.getId()) {
-            case R.id.btn_cambiar_tipo_mapa:
-                MenuInflater infla =getMenuInflater();
-                infla.inflate(R.menu.tipo_mapa_menu, menu);
-                break;
-
-            default:  Mensaje("No clasificado"); break;
-        }
-        super.onCreateContextMenu(menu, v, menuInfo);
-
-    }
 
     private double calcular_distancia(LatLng primero, LatLng segundo){
         //Coordenadas de los puntos entre los que se calcula la distancia
@@ -226,34 +210,14 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
 
     }
 
+
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public void onBackPressed() {
 
-        int opcionseleccionada = item.getItemId();
-        switch (opcionseleccionada) {
-            case R.id.item_map_hybrid:
-                mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                break;
-            case R.id.item_map_normal:
-                mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-                break;
-            case R.id.item_map_satellite:
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.item_map_terrain:
-                mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.item_map_custom:
-                mMap.setMapStyle(
-                        MapStyleOptions.loadRawResourceStyle(
-                                this, R.raw.style_json));
-                break;
-            default:  Mensaje("No clasificado"); break;
-        }
-
-        return true;
+        Intent intento = new Intent(getApplicationContext(), menuPrincipal.class);
+        startActivity(intento);
+        return;
     }
-
 
     @Override
     public void processFinish(String output) {
@@ -275,6 +239,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
 
         rsp = correcta.split("_");
         coord = rsp[1].split(",");
+        respuesta_info =rsp[0];
         respuesta_coordenadas = new LatLng(Double.parseDouble(coord[0]),Double.parseDouble(coord[1]));
         TextView pregunta = (TextView) findViewById(R.id.tvpregunta);
         pregunta.setText("¿"+preg+"?");

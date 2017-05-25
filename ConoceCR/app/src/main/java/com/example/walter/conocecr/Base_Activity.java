@@ -42,6 +42,13 @@ public class Base_Activity extends AppCompatActivity {
 
 
 
+    @Override
+    public void onBackPressed() {
+
+        Intent intento = new Intent(getApplicationContext(), menuPrincipal.class);
+        startActivity(intento);
+        return;
+    }
 
 
 }

@@ -100,7 +100,16 @@ public class Act_pregunta extends Base_Activity implements AsyncResponse{
     }// fin de OnclickDelButton
 
     public void Mensaje(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();};
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();}
+
+    @Override
+    public void onBackPressed() {
+
+        Intent intento = new Intent(getApplicationContext(), menuPrincipal.class);
+        startActivity(intento);
+        return;
+    }
+
 
     @Override
     public void processFinish(String output) {
