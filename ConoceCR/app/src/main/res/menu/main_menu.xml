@@ -11,7 +11,8 @@
 
         android:icon="@drawable/settings"/>
 
-    <item android:title="Autores"
+    <item android:title="GitHub"
         android:id="@+id/item_autores"
-        android:icon="@drawable/softtware_engineer" />
+        app:showAsAction="always"
+        android:icon="@drawable/github" />
 </menu>

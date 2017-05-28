@@ -1,6 +1,7 @@
 package com.example.walter.conocecr;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +22,13 @@ public class Base_Activity extends AppCompatActivity {
                 Mensaje("Primero");
                 break;
             case R.id.item2:
-                Mensaje("Segundo");
+
                 break;
             case R.id.item_autores:
 
-                Intent intento = new Intent(getApplicationContext(), Autores_Activity.class);
-                startActivity(intento);
+                Uri uri = Uri.parse("https://github.com/asvaaron/ConoceCR");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
                 break;
             default:
                 Mensaje("No clasificado");

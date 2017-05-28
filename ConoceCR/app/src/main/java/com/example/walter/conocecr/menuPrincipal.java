@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class menuPrincipal extends AppCompatActivity {
+public class menuPrincipal extends Base_Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,6 @@ public class menuPrincipal extends AppCompatActivity {
                     default:break; }// fin de casos
             }// fin del onclick
         });
-    }// fin de OnclickDelButton
+    }
 
 }
