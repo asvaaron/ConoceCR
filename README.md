@@ -3,10 +3,10 @@
 Autores:
 
 + Jean Abarcar
-![jean](https://cloud.githubusercontent.com/assets/7121256/26532066/edb57b14-43b4-11e7-86ec-0777c117a742.jpg)
+![jean](https://cloud.githubusercontent.com/assets/7121256/26532066/edb57b14-43b4-11e7-86ec-0777c117a742.jpg=100x20)
 
 + Walter Araya
-![walter](https://cloud.githubusercontent.com/assets/7121256/26532070/0608fc72-43b5-11e7-88f9-9cbaf599199e.jpg)
+![walter](https://cloud.githubusercontent.com/assets/7121256/26532070/0608fc72-43b5-11e7-88f9-9cbaf599199e.jpg=100x20)
 + Aarpon Sibaja
 
-![aaron](https://cloud.githubusercontent.com/assets/7121256/26532069/046dabce-43b5-11e7-9c70-6e32475b3410.jpg)
+![aaron](https://cloud.githubusercontent.com/assets/7121256/26532069/046dabce-43b5-11e7-9c70-6e32475b3410.jpg=100x20)
