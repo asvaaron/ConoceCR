@@ -24,6 +24,10 @@ public class ObtenerCoordenadasWS extends AsyncTask<String, Integer, String> {
         //
         String conn_walter = "http://10.0.3.3/CCR_ws/obtenerCoordenadas.php";
 
+        String conn_jean = "http://localhost/CCR_ws/obtenerCoordenadas.php";
+
+
+
         String devuelve = "";
 
         URL url = null; // Url de donde queremos obtener información

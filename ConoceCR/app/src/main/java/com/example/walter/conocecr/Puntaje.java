@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class Puntaje {
      TextView resultado;
-     String urlconexion = "http://www.nacion.com/rss/latest/?contentType=NWS";
+     String urlconexion = "http://localhost/CCR_ws/guardarPuntaje.php";
      ObtenerWebService hiloconexion = new ObtenerWebService(urlconexion);
 
 

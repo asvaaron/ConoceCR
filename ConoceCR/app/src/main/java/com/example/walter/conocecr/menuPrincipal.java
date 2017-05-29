@@ -15,6 +15,8 @@ public class menuPrincipal extends Base_Activity {
 
         OnclickDelButton(R.id.btn1);
         OnclickDelButton(R.id.btn_mapa);
+        Puntaje punto = new Puntaje();
+        punto.metodoMandatRequest();
     }
 
 
