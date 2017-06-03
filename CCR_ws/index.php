@@ -10,8 +10,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+        <a href="http://localhost/CCR_ws/loguearRespuesta.php?usr=1&pnt=20&preg=2&resp_sel=2">Vamo a probar</a>
     </body>
 </html>

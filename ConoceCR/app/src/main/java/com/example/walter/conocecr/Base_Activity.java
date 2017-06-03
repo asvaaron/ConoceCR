@@ -8,6 +8,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class Base_Activity extends AppCompatActivity {
+    public static String usr;
+    public static String idusr;
+    public static int preguntas_seleccion=3; //en este momento hay 5 de cada una
+    public static int preguntas_mapa = 2;   //pero pongo la mitad para evitar que en el aleatorio se repitan
+    public static int puntaje_porPregunta=20; // [100/(preguntas_seleccion+preguntas_mapa)]
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

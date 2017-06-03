@@ -11,82 +11,84 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static android.R.attr.src;
-import static com.example.walter.conocecr.R.drawable.walter;
-
 
 public class ObtenerPreguntasWS extends AsyncTask<String, Integer, String> {
     public AsyncResponse delegate = null;
     @Override
     protected String doInBackground(String... params) {
+        for(;;) {
 
-        String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
-        String conn_clase = "http://172.17.28.57/ConoceCR/obtenerPregunta_aleatoria.php";
-        String conn_walter = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
-        String conn_jean = "http://localhost/CCR_ws/obtenerPregunta_aleatoria.php";
-
-
-        String devuelve = "";
-
-        URL url = null; // Url de donde queremos obtener información
-        try {
-            // Cambiar conexion dependiendo de sus especificaciones
-
-            url = new URL(conn_aaron);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
-                    " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
+            String conn_aaron = "http://192.168.1.107/ConoceCR/obtenerPregunta_aleatoria.php";
+            String conn_clase = "http://172.17.28.57/ConoceCR/obtenerPregunta_aleatoria.php";
+            String conn_walter = "http://10.0.3.3/CCR_ws/obtenerPregunta_aleatoria.php";
+            String conn_jean = "http://localhost/CCR_ws/obtenerPregunta_aleatoria.php";
 
 
-            int respuesta = connection.getResponseCode();
+            String devuelve = "";
 
-            StringBuilder result = new StringBuilder();
+            URL url = null; // Url de donde queremos obtener información
+            try {
+                // Cambiar conexion dependiendo de sus especificaciones
 
-            if (respuesta == HttpURLConnection.HTTP_OK){
+                url = new URL(conn_walter);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
+                connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
+                        " (Linux; Android 1.5; es-ES) Ejemplo HTTP");
 
 
-                InputStream in = new BufferedInputStream(connection.getInputStream());  // preparo la cadena de entrada
+                int respuesta = connection.getResponseCode();
 
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));  // la introduzco en un BufferedReader
+                StringBuilder result = new StringBuilder();
 
-                // El siguiente proceso lo hago porque el JSONOBject necesita un String y tengo
-                // que tranformar el BufferedReader a String. Esto lo hago a traves de un
-                // StringBuilder.
+                if (respuesta == HttpURLConnection.HTTP_OK) {
 
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    result.append(line);        // Paso toda la entrada al StringBuilder
-                }
 
-                //Creamos un objeto JSONObject para poder acceder a los atributos (campos) del objeto.
-                //JSONObject respuestaJSON = new JSONObject(result.toString());   //Creo un JSONObject a partir del StringBuilder pasado a cadena
-                //Accedemos al vector de resultados
-                //JSONObject resultJSON = respuestaJSON.getJSONObject("pregunta");   // results es el nombre del campo en el JSON
+                    InputStream in = new BufferedInputStream(connection.getInputStream());  // preparo la cadena de entrada
 
-                //Vamos obteniendo todos los campos que nos interesen.
-                //En este caso obtenemos la primera dirección de los resultados.
-                //String preg="no se recibio la info";
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));  // la introduzco en un BufferedReader
+
+                    // El siguiente proceso lo hago porque el JSONOBject necesita un String y tengo
+                    // que tranformar el BufferedReader a String. Esto lo hago a traves de un
+                    // StringBuilder.
+
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        result.append(line);        // Paso toda la entrada al StringBuilder
+                    }
+
+                    //Creamos un objeto JSONObject para poder acceder a los atributos (campos) del objeto.
+                    //JSONObject respuestaJSON = new JSONObject(result.toString());   //Creo un JSONObject a partir del StringBuilder pasado a cadena
+                    //Accedemos al vector de resultados
+                    //JSONObject resultJSON = respuestaJSON.getJSONObject("pregunta");   // results es el nombre del campo en el JSON
+
+                    //Vamos obteniendo todos los campos que nos interesen.
+                    //En este caso obtenemos la primera dirección de los resultados.
+                    //String preg="no se recibio la info";
 
 
                     //preg = resultJSON.getString("descripcion");
                     //res =  resultJSON.getJSONObject(0).getString("respuestas");
                     // dentro del results pasamos a Objeto la seccion formated_address
 
-                devuelve = result.toString();   // variable de salida que mandaré al onPostExecute para que actualice la UI
+                    devuelve = result.toString();   // variable de salida que mandaré al onPostExecute para que actualice la UI
+                    if (devuelve.equalsIgnoreCase("")) {
+                    }
+                } else {
+                    devuelve = connection.getErrorStream().toString();
+                }
 
-            }else{
-                devuelve = connection.getErrorStream().toString();
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+                //} catch (JSONException e) {
+                //  e.printStackTrace();
             }
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        //} catch (JSONException e) {
-          //  e.printStackTrace();
+            if (!devuelve.equalsIgnoreCase("")){
+                return devuelve;
+            }
         }
-        return devuelve;
     }
 
     @Override

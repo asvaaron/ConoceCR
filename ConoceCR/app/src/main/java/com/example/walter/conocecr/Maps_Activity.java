@@ -33,6 +33,9 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
     private GoogleMap mMap;
     private LatLng respuesta_coordenadas;// Respuesta Corrdenadas
     private String respuesta_info; // Respuesta de la pregunta para econtrar información
+    public static String id_pregunta;
+    public static String id_respuesta_correcta;
+    public static String id_respuesta_seleccionada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(map);
         mapFragment.getMapAsync(this);
-
+        preguntas_mapa--;
         respuesta_info="Braulio Carillo";// Búsqueda Default
 
         //Button Mi_button = (Button) findViewById(R.id.btn_location_info);
@@ -147,12 +150,14 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
                         Thread.sleep(3000);
                     }catch (InterruptedException e){}
                     resp = true;
+                    id_respuesta_seleccionada = id_respuesta_correcta;
                     //pasar a otro activity
                     siguientePregunta();
                 }
                 else {
                     cnt--;
                     Mensaje("Respuesta Incorrecta, Intente de nuevo! (Intentos restantes: "+cnt+".)");
+                    id_respuesta_seleccionada = "0";
                     siguientePregunta();
                 }
                     //Mensaje("Correcto Posición: (" +calcular_distancia(respuesta_coordenadas,latLng)+ ")");
@@ -167,13 +172,28 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
     }
 
     private void siguientePregunta(){
+
         if(cnt==0||resp){
-            Intent intento = new Intent(getApplicationContext(), Maps_Activity.class);
+            Intent intento = null;
+            loguearRespuesta();
+            if(preguntas_mapa>0){
+             intento = new Intent(getApplicationContext(), Maps_Activity.class);
+            }else{
+                intento = new Intent(getApplicationContext(), Final.class); // Activity final, indica puntaje final del usuario luego ocn un boton aceptar vuelve al menu principal
+            }
             startActivity(intento);
             finish();
         }
     }
 
+    private void loguearRespuesta() {
+        EnviarPuntajesWS hiloconexion = new EnviarPuntajesWS();
+        hiloconexion.delegate = null;
+        int ppp=0;
+        if(Integer.parseInt(id_respuesta_seleccionada)!=0){ppp=puntaje_porPregunta;}
+
+        hiloconexion.execute("loguearRespuesta.php?usr="+idusr+"&pnt="+ppp+"&preg="+id_pregunta+"&resp_sel="+id_respuesta_seleccionada);
+    }
 
 
     private double calcular_distancia(LatLng primero, LatLng segundo){
@@ -231,6 +251,8 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
             JSONObject obj = new JSONObject(output);
             JSONObject preguntaa = obj.getJSONObject("pregunta");
             JSONObject respuestaa = obj.getJSONObject("respuesta");
+            id_pregunta = preguntaa.getString("id_pregunta");
+            id_respuesta_correcta = respuestaa.getString("id_respuesta");
             preg=preguntaa.getString("descripcion");
             correcta=respuestaa.getString("descripcion");
         } catch (JSONException e) {

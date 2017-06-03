@@ -34,7 +34,7 @@ public class ObtenerCoordenadasWS extends AsyncTask<String, Integer, String> {
         try {
             // Cambiar conexion dependiendo de sus especificaciones
 
-            url = new URL(conn_aaron);
+            url = new URL(conn_walter);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
             connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                     " (Linux; Android 1.5; es-ES) Ejemplo HTTP");

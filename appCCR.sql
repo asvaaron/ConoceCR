@@ -26,13 +26,13 @@ REFERENCES Respuestas(id_respuesta)
 );
 
 create table Usuarios(
-	id_usuario int,
+	id_usuario int  NOT NULL AUTO_INCREMENT,
 	nombre varchar(100),
 CONSTRAINT PK_Usuarios PRIMARY KEY (id_usuario)
 );
 
 create table Puntajes(
-	id_puntaje int,
+	id_puntaje int NOT NULL AUTO_INCREMENT,
 	usuario int,
 	puntaje int,
 	fecha datetime,
@@ -48,8 +48,6 @@ create table Intentos(
 	respuesta_seleccionada int,
 	CONSTRAINT FK_PreguntasIntentos FOREIGN KEY (pregunta)
 REFERENCES Preguntas(id_pregunta),
-	CONSTRAINT FK_PuntajesIntentos FOREIGN KEY (puntaje)
-REFERENCES Puntajes(id_puntaje),
 	CONSTRAINT FK_UsuarioIntentos FOREIGN KEY (usuario)
 REFERENCES Usuarios(id_usuario),
 	CONSTRAINT FK_RespuestasIntentos FOREIGN KEY (respuesta_seleccionada)
