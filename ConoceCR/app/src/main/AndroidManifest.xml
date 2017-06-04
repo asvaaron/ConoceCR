@@ -47,7 +47,8 @@
             android:label="@string/title_activity_autors_"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".WebView_Activity" />
-        <activity android:name=".Final"></activity>
+        <activity android:name=".Final" />
+        <activity android:name=".Puntajes_Jugadores"></activity>
     </application>
 
 </manifest>

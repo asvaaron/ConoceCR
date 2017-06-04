@@ -3,7 +3,8 @@
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#82A374">
 
 
     <LinearLayout
@@ -17,7 +18,8 @@
             android:layout_height="70dp"
             android:layout_weight="1"
             android:text="Pregunta del mapa"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="#AEC8A4"/>
 </LinearLayout>
 
     <fragment
@@ -33,19 +35,23 @@
 
         <Button
             android:id="@+id/btn_location_info"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_row="1"
-            android:text="Información " />
+            android:background="@drawable/btn_style"
+            android:text="Información "
+            android:textColor="#AEC8A4" />
 
         <Button
             android:id="@+id/btn_respuesta"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_column="1"
             android:layout_row="1"
-            android:text="Respuesta" />
+            android:background="@drawable/btn_style"
+            android:text="Respuesta"
+            android:textColor="#AEC8A4" />
 
     </GridLayout>
 

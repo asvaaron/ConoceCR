@@ -23,11 +23,11 @@ public class Base_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch (id) {
-            case R.id.item1:
-                Mensaje("Primero");
-                break;
+
             case R.id.item2:
 
+                Intent intento = new Intent(getApplicationContext(), menuPrincipal.class);
+                startActivity(intento);
                 break;
             case R.id.item_autores:
 

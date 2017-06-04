@@ -30,7 +30,7 @@ public class ObtenerPreguntasWS extends AsyncTask<String, Integer, String> {
             try {
                 // Cambiar conexion dependiendo de sus especificaciones
 
-                url = new URL(conn_walter);
+                url = new URL(conn_aaron);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //Abrir la conexión
                 connection.setRequestProperty("User-Agent", "Mozilla/5.0" +
                         " (Linux; Android 1.5; es-ES) Ejemplo HTTP");

@@ -16,7 +16,7 @@ public class EnviarPuntajesWS extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String cadena = "http://10.0.3.3/CCR_ws/";
+        String cadena = "http://192.168.1.107/ConoceCR/";
 
         //http://maps.googleapis.com/maps/api/geocode/json?latlng=38.404593,%20-0.529534&sensor=false
         cadena = cadena + params[0];

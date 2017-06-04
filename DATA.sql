@@ -54,9 +54,6 @@ insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) valu
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(7,"Donde se encuentra el Parque Nacional Tapanti",9,0);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(8,"Donde se encuentra el Parque Nacional  Juan Castro Blanco",10,0);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(9,"Cual de las siguientes islas es Patrimonio Natural de la Humanidad",11,3);
-<<<<<<< HEAD
-insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(10,"Cual de las siguientes islas fue la sede del centro penitenciaro mas famoso de Costa Rica",13,3);
-=======
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(10,"Cual de las siguientes islas fue la sede del penal mas famoso de Costa Rica",13,3);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(11,"Cual provincia fue la primera capital de Costa Rica",21,4);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(12,"Cual provincia limita con el Mar Caribe",18,4);
@@ -66,5 +63,4 @@ insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) valu
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(16,"Cual es el segundo rio mas grande de Costa Rica",26,5);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(17,"Cual rio sirve de frontera entre las repúblicas de Panamá y Costa Rica. ",27,5);
 insert into Preguntas(id_pregunta,descripcion,respuesta_correcta,categoria) values(18,"Cual rio es apto para la practica de rafting y pertenece a la vertienete del atlantico. ",28,5);
- 
->>>>>>> origin/master
+

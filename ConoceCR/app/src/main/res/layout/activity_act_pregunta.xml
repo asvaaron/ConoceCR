@@ -8,73 +8,87 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#82A374"
     tools:context="com.example.walter.conocecr.Act_pregunta">
 
     <TextView
-        android:text="Pregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvpreg"
-        android:textSize="30sp"
-        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="175dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Pregunta"
+        android:textColor="#AEC8A4"
+        android:textSize="30sp" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/RelativeLayout1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvpreg">
+        android:layout_alignParentStart="true">
 
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/btnC"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:background="@drawable/btn_style"
+            android:text="Button"
+            android:textColor="#AEC8A4"
+
+            android:layout_marginBottom="10dp"/>
 
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnD"
-            android:layout_above="@+id/btnA"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/btnA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/btnB"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:background="@drawable/btn_style"
+            android:text="Button"
+            android:textColor="#AEC8A4"
+
+            android:layout_marginBottom="10dp"/>
 
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnD"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnC"
-            android:layout_alignParentBottom="true"
+            android:layout_above="@+id/btnA"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentStart="true"
+            android:background="@drawable/btn_style"
+            android:text="Button"
+            android:textColor="#AEC8A4"
+            android:layout_marginBottom="10dp"/>
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/btnC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/btn_style"
+            android:text="Button"
+            android:textColor="#AEC8A4"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
 
 </RelativeLayout>

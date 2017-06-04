@@ -46,12 +46,15 @@ public class menuPrincipal extends Base_Activity implements AsyncResponse {
 
                     case R.id.btn1:
                         MensajeEdText();
+
                         break;
 
                     case R.id.btn_puntajes:
-                        //mostrar form puntajes
+                         intento = new Intent(getApplicationContext(), Puntajes_Jugadores.class);
+                        startActivity(intento);
                         break;
-                    default:break; }// fin de casos
+                    default:
+                        break; }// fin de casos
             }// fin del onclick
         });
     }

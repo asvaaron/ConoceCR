@@ -8,23 +8,96 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#82A374"
     tools:context="com.example.walter.conocecr.Final">
 
     <TextView
-        android:text="Jugador, Gracias por participar, su puntaje fue de: ## puntos."
+        android:id="@+id/textView16"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tableLayout2"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="108dp"
+        android:text="Gracias Por Jugar Conoce CR"
+        android:textColor="#AEC8A4"
+        android:textSize="40sp" />
+
+
+    <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tableLayout2"
+        android:layout_marginLeft="43dp"
+        android:layout_marginStart="43dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="99dp">
 
-    <Button
-        android:text="Volver al menu principal"
-        android:layout_width="wrap_content"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Id Jugador:"
+                android:textSize="24sp"
+                android:textColor="#AEC8A4"/>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Puntaje:"
+                android:textSize="24sp"
+                android:textColor="#AEC8A4"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_idjugador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_marginTop="20dp"
+                android:text="id"
+                android:textSize="24sp"
+                android:textColor="#AEC8A4"/>
+
+            <TextView
+                android:id="@+id/textView_puntake"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="26dp"
+                android:layout_marginTop="20dp"
+                android:text="puntos"
+                android:textSize="24sp"
+                android:textColor="#AEC8A4"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:text="Puntaje de Juego:"
+        android:textSize="40sp"
+        android:gravity="center"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button" />
+        android:textColor="#AEC8A4"/>
+
 </RelativeLayout>
