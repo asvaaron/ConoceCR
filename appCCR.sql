@@ -54,3 +54,17 @@ REFERENCES Usuarios(id_usuario),
 REFERENCES Respuestas(id_respuesta)
 );
 
+
+
+DELIMITER //
+CREATE PROCEDURE calcularPuntaje(IN id_usr VARCHAR(100), OUT ppuntaje INT)
+ BEGIN
+ 
+ UPDATE puntajes
+ SET puntajes.puntaje=(SELECT SUM(puntaje)  FROM intentos WHERE usuario=id_usr)
+ WHERE puntajes.usuario=id_usr;
+ 
+ SELECT puntaje INTO ppuntaje FROM puntajes WHERE usuario=id_usr;
+ SELECT ppuntaje;
+ END //
+DELIMITER ;
