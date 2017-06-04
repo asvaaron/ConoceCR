@@ -32,10 +32,14 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
     private boolean resp = false;
     private GoogleMap mMap;
     private LatLng respuesta_coordenadas;// Respuesta Corrdenadas
+<<<<<<< HEAD
     private String respuesta_info; // Respuesta de la pregunta para econtrar información
     public static String id_pregunta;
     public static String id_respuesta_correcta;
     public static String id_respuesta_seleccionada;
+=======
+    private String respuesta_info; // Respuesta de la pregunta para wiki
+>>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +150,8 @@ public class Maps_Activity extends Base_Activity implements OnMapReadyCallback, 
                     mostrar_respuesta();
                     Mensaje("Respuesta correcta! Posición: (" + latLng + ")");
                     mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    int zoomLevel = 10; //Esto puede ir hasta  21
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(respuesta_coordenadas, zoomLevel));
                     try{
                         Thread.sleep(3000);
                     }catch (InterruptedException e){}
