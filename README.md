@@ -1,6 +1,6 @@
 # ConoceCR
 
-Univeridad Nacional de Costa Rica
+Universidad Nacional de Costa Rica
 
 Escuela de Informática
 
