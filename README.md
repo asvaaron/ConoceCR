@@ -1,6 +1,9 @@
 # ConoceCR
+
 Univeridad Nacional de Costa Rica
+
 Escuela de Informática
+
 Programación en plataformas móviles
 
 Autores:
