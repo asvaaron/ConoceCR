@@ -2,9 +2,6 @@
 
 Autores:
 
-+ Jean Abarca
-
-<img src="https://cloud.githubusercontent.com/assets/7121256/26532066/edb57b14-43b4-11e7-86ec-0777c117a742.jpg" alt="Drawing" height="200" width="200"/>
 
 + Walter Araya
 
